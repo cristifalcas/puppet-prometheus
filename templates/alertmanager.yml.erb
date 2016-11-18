@@ -1,0 +1,27 @@
+# This file is managed by Puppet, any changes will be overwritten
+
+<%-
+  $LOAD_PATH.unshift(File.join(File.dirname(__FILE__),"..","..","..","lib"))
+  require 'puppet_x/elastic/deep_to_i'
+  require 'puppet_x/elastic/hash'
+
+  @yml_string = ''
+
+  if !scope['prometheus::alertmanager::config'].empty?
+
+    # Sort Hash and transform it into yaml
+    @yml_string += Puppet_X::Elastic::deep_to_i(
+      scope['prometheus::alertmanager::config']
+    ).extend(
+      Puppet_X::Elastic::SortedHash
+    ).to_yaml
+
+    # Puppet < 4 uses ZAML, which has some deviations from Puppet 4 YAML
+    # implementation
+    unless Puppet::Util::Package.versioncmp(Puppet.version, '4') >= 0
+      @yml_string.gsub!(/^\s{2}/, '')
+    end
+
+  end
+-%>
+<%= @yml_string %>

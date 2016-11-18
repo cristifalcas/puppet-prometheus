@@ -1,0 +1,55 @@
+# File managed by puppet
+#
+ARGS="<% -%>
+<% if @collector_diskstats_ignored_devices -%>
+ -collector.diskstats.ignored-devices=<%= scope['prometheus::node_exporter::collector_diskstats_ignored_devices'] -%>
+<% end -%>
+<% if @collector_filesystem_ignored_mount_points -%>
+ -collector.filesystem.ignored-mount-points=<%= scope['prometheus::node_exporter::collector_filesystem_ignored_mount_points'] -%>
+<% end -%>
+<% if @collector_megacli_command -%>
+ -collector.megacli.command=<%= scope['prometheus::node_exporter::collector_megacli_command'] -%>
+<% end -%>
+<% if @collector_netdev_ignored_devices -%>
+ -collector.netdev.ignored-devices=<%= scope['prometheus::node_exporter::collector_netdev_ignored_devices'] -%>
+<% end -%>
+<% if @collector_ntp_protocol_version -%>
+ -collector.ntp.protocol-version=<%= scope['prometheus::node_exporter::collector_ntp_protocol_version'] -%>
+<% end -%>
+<% if @collector_ntp_server -%>
+ -collector.ntp.server=<%= scope['prometheus::node_exporter::collector_ntp_server'] -%>
+<% end -%>
+<% if @collector_procfs -%>
+ -collector.procfs=<%= scope['prometheus::node_exporter::collector_procfs'] -%>
+<% end -%>
+<% if @collector_supervisord_url -%>
+ -collector.supervisord.url=<%= scope['prometheus::node_exporter::collector_supervisord_url'] -%>
+<% end -%>
+<% if @collector_sysfs -%>
+ -collector.sysfs=<%= scope['prometheus::node_exporter::collector_sysfs'] -%>
+<% end -%>
+<% if @collector_systemd_private -%>
+ -collector.systemd.private=<%= scope['prometheus::node_exporter::collector_systemd_private'] -%>
+<% end -%>
+<% if @collector_textfile_directory -%>
+ -collector.textfile.directory=<%= scope['prometheus::node_exporter::collector_textfile_directory'] -%>
+<% end -%>
+<% if @collectors_enabled -%>
+ -collectors.enabled=<%= scope['prometheus::node_exporter::collectors_enabled'] -%>
+<% end -%>
+<% if @log_format -%>
+ -log.format=<%= scope['prometheus::node_exporter::log_format'] -%>
+<% end -%>
+<% if @log_level -%>
+ -log.level=<%= scope['prometheus::node_exporter::log_level'] -%>
+<% end -%>
+<% if @web_listen_address -%>
+ -web.listen-address=<%= scope['prometheus::node_exporter::web_listen_address'] -%>
+<% end -%>
+<% if @web_telemetry_path -%>
+ -web.telemetry-path=<%= scope['prometheus::node_exporter::web_telemetry_path'] -%>
+<% end -%>
+<% if @extra_options -%>
+ <%= scope['prometheus::node_exporter::extra_options'] -%>
+<% end -%>
+"
