@@ -5,7 +5,7 @@
 # Parameters:
 #
 #  [*package_name*]
-#  Prometheus node node_exporter package name - not available yet
+#  Prometheus node node_exporter package name
 #
 #  [*package_ensure*]
 #  If package, then use this for package ensure default 'latest'
