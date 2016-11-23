@@ -35,7 +35,7 @@ ARGS="<% -%>
  -collector.textfile.directory=<%= scope['prometheus::node_exporter::collector_textfile_directory'] -%>
 <% end -%>
 <% if @collectors_enabled -%>
- -collectors.enabled=<%= scope['prometheus::node_exporter::collectors_enabled'] -%>
+ -collectors.enabled=<%= Array(scope['prometheus::node_exporter::collectors_enabled']).join(", ") -%>
 <% end -%>
 <% if @log_format -%>
  -log.format=<%= scope['prometheus::node_exporter::log_format'] -%>
