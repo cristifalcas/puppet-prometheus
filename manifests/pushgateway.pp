@@ -36,6 +36,9 @@
 #  [*web_listen_address*]
 #     Address to listen on for the web interface and API. (default ":9093")
 #
+#  [*web_telemetry_path*]
+#  web_telemetry_path
+#
 #  [*extra_options*]
 #  Extra options added to alertmanager startup command
 #
