@@ -1,10 +1,17 @@
 # Class prometheus::params
 # Include default parameters for prometheus class
 class prometheus::params {
-  $purge_config_dir = false
   $package_name = 'prometheus'
   $package_ensure = 'installed'
+  $service_name = 'prometheus'
+  $user = 'prometheus'
+  $group = 'prometheus'
   $config_dir = '/etc/prometheus'
+  $purge_config_dir = false
+  $manage_config = true
+  $manage_as = 'service'
+  $container_image = 'docker.io/prom/prometheus:latest'
+
   $config_file = 'prometheus.yml'
   $alertmanager_notification_queue_capacity = undef
   $alertmanager_timeout = undef
@@ -45,5 +52,6 @@ class prometheus::params {
   $web_user_assets = undef
   $extra_options = undef
 
-  $config = {}
+  $config = {
+  }
 }

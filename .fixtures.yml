@@ -1,5 +1,6 @@
 fixtures:
   repositories:
     stdlib: "https://github.com/puppetlabs/puppetlabs-stdlib"
+    docker: "https://github.com/cristifalcas/puppet-docker"
   symlinks:
     "prometheus": "#{source_dir}"

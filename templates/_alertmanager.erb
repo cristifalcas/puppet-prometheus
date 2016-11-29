@@ -1,0 +1,22 @@
+ -config.file=<%= scope['prometheus::alertmanager::config_dir'] -%>/<%= scope['prometheus::alertmanager::config_file'] -%>
+<% if @dev -%>
+ -dev=<%= scope['prometheus::alertmanager::dev'] -%>
+<% end -%>
+<% if @log_format -%>
+ -log.format=<%= scope['prometheus::alertmanager::log_format'] -%>
+<% end -%>
+<% if @log_level -%>
+ -log.level=<%= scope['prometheus::alertmanager::log_level'] -%>
+<% end -%>
+<% if @storage_path -%>
+ -storage.path=<%= scope['prometheus::alertmanager::storage_path'] -%>
+<% end -%>
+<% if @web_external_url -%>
+ -web.external-url=<%= scope['prometheus::alertmanager::web_external_url'] -%>
+<% end -%>
+<% if @web_listen_address -%>
+ -web.listen-address=<%= scope['prometheus::alertmanager::web_listen_address'] -%>
+<% end -%>
+<% if @extra_options -%>
+ <%= scope['prometheus::alertmanager::extra_options'] -%>
+<% end -%>

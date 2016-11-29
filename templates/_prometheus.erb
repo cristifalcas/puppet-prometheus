@@ -1,0 +1,115 @@
+ -config.file=<%= scope['prometheus::config_dir'] -%>/<%= scope['prometheus::config_file'] -%>
+<% if @alertmanager_notification_queue_capacity -%>
+ -alertmanager.notification-queue-capacity=<%= scope['prometheus::alertmanager_notification_queue_capacity'] -%>
+<% end -%>
+<% if @alertmanager_timeout -%>
+ -alertmanager.timeout=<%= scope['prometheus::alertmanager_timeout'] -%>
+<% end -%>
+<% if @alertmanager_url -%>
+ -alertmanager.url=<%= scope['prometheus::alertmanager_url'] -%>
+<% end -%>
+<% if @log_format -%>
+ -log.format=<%= scope['prometheus::log_format'] -%>
+<% end -%>
+<% if @log_level -%>
+ -log.level=<%= scope['prometheus::log_level'] -%>
+<% end -%>
+<% if @query_max_concurrency -%>
+ -query.max-concurrency=<%= scope['prometheus::query_max_concurrency'] -%>
+<% end -%>
+<% if @query_staleness_delta -%>
+ -query.staleness-delta=<%= scope['prometheus::query_staleness_delta'] -%>
+<% end -%>
+<% if @query_timeout -%>
+ -query.timeout=<%= scope['prometheus::query_timeout'] -%>
+<% end -%>
+<% if @storage_local_checkpoint_dirty_series_limit -%>
+ -storage.local.checkpoint-dirty-series-limit=<%= scope['prometheus::storage_local_checkpoint_dirty_series_limit'] -%>
+<% end -%>
+<% if @storage_local_checkpoint_interval -%>
+ -storage.local.checkpoint-interval=<%= scope['prometheus::storage_local_checkpoint_interval'] -%>
+<% end -%>
+<% if @storage_local_chunk_encoding_version -%>
+ -storage.local.chunk-encoding-version=<%= scope['prometheus::storage_local_chunk_encoding_version'] -%>
+<% end -%>
+<% if @storage_local_dirty -%>
+ -storage.local.dirty=<%= scope['prometheus::storage_local_dirty'] -%>
+<% end -%>
+<% if @storage_local_engine -%>
+ -storage.local.engine=<%= scope['prometheus::storage_local_engine'] -%>
+<% end -%>
+<% if @storage_local_max_chunks_to_persist -%>
+ -storage.local.max-chunks-to-persist=<%= scope['prometheus::storage_local_max_chunks_to_persist'] -%>
+<% end -%>
+<% if @storage_local_memory_chunks -%>
+ -storage.local.memory-chunks=<%= scope['prometheus::storage_local_memory_chunks'] -%>
+<% end -%>
+<% if @storage_local_num_fingerprint_mutexes -%>
+ -storage.local.num-fingerprint-mutexes=<%= scope['prometheus::storage_local_num_fingerprint_mutexes'] -%>
+<% end -%>
+<% if @storage_local_path -%>
+ -storage.local.path=<%= scope['prometheus::storage_local_path'] -%>
+<% end -%>
+<% if @storage_local_pedantic_checks -%>
+ -storage.local.pedantic-checks=<%= scope['prometheus::storage_local_pedantic_checks'] -%>
+<% end -%>
+<% if @storage_local_retention -%>
+ -storage.local.retention=<%= scope['prometheus::storage_local_retention'] -%>
+<% end -%>
+<% if @storage_local_series_file_shrink_ratio -%>
+ -storage.local.series-file-shrink-ratio=<%= scope['prometheus::storage_local_series_file_shrink_ratio'] -%>
+<% end -%>
+<% if @storage_local_series_sync_strategy -%>
+ -storage.local.series-sync-strategy=<%= scope['prometheus::storage_local_series_sync_strategy'] -%>
+<% end -%>
+<% if @storage_remote_graphite_address -%>
+ -storage.remote.graphite-address=<%= scope['prometheus::storage_remote_graphite_address'] -%>
+<% end -%>
+<% if @storage_remote_graphite_prefix -%>
+ -storage.remote.graphite-prefix=<%= scope['prometheus::storage_remote_graphite_prefix'] -%>
+<% end -%>
+<% if @storage_remote_graphite_transport -%>
+ -storage.remote.graphite-transport=<%= scope['prometheus::storage_remote_graphite_transport'] -%>
+<% end -%>
+<% if @storage_remote_influxdb_url -%>
+ -storage.remote.influxdb-url=<%= scope['prometheus::storage_remote_influxdb_url'] -%>
+<% end -%>
+<% if @storage_remote_influxdb_database -%>
+ -storage.remote.influxdb.database=<%= scope['prometheus::storage_remote_influxdb_database'] -%>
+<% end -%>
+<% if @storage_remote_influxdb_retention_policy -%>
+ -storage.remote.influxdb.retention-policy=<%= scope['prometheus::storage_remote_influxdb_retention_policy'] -%>
+<% end -%>
+<% if @storage_remote_influxdb_username -%>
+ -storage.remote.influxdb.username=<%= scope['prometheus::storage_remote_influxdb_username'] -%>
+<% end -%>
+<% if @storage_remote_opentsdb_url -%>
+ -storage.remote.opentsdb-url=<%= scope['prometheus::storage_remote_opentsdb_url'] -%>
+<% end -%>
+<% if @web_console_libraries -%>
+ -web.console.libraries=<%= scope['prometheus::web_console_libraries'] -%>
+<% end -%>
+<% if @web_console_templates -%>
+ -web.console.templates=<%= scope['prometheus::web_console_templates'] -%>
+<% end -%>
+<% if @web_enable_remote_shutdown -%>
+ -web.enable-remote-shutdown=<%= scope['prometheus::web_enable_remote_shutdown'] -%>
+<% end -%>
+<% if @web_external_url -%>
+ -web.external-url=<%= scope['prometheus::web_external_url'] -%>
+<% end -%>
+<% if @web_listen_address -%>
+ -web.listen-address=<%= scope['prometheus::web_listen_address'] -%>
+<% end -%>
+<% if @web_route_prefix -%>
+ -web.route-prefix=<%= scope['prometheus::web_route_prefix'] -%>
+<% end -%>
+<% if @web_telemetry_path -%>
+ -web.telemetry-path=<%= scope['prometheus::web_telemetry_path'] -%>
+<% end -%>
+<% if @web_user_assets -%>
+ -web.user-assets=<%= scope['prometheus::web_user_assets'] -%>
+<% end -%>
+<% if @extra_options -%>
+ <%= scope['prometheus::extra_options'] -%>
+<% end -%>

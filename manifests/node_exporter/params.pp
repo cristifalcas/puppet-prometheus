@@ -20,4 +20,5 @@ class prometheus::node_exporter::params {
   $log_level = undef
   $web_listen_address = ':9100'
   $web_telemetry_path = undef
+  $extra_options = undef
 }

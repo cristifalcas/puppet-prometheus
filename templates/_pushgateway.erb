@@ -1,0 +1,21 @@
+<% if @log_format -%>
+ -log.format=<%= scope['prometheus::pushgateway::log_format'] -%>
+<% end -%>
+<% if @log_level -%>
+ -log.level='<%= scope['prometheus::pushgateway::log_level'] %>'
+<% end -%>
+<% if @persistence_file -%>
+ -persistence.file=<%= scope['prometheus::pushgateway::persistence_file'] -%>
+<% end -%>
+<% if @persistence_interval -%>
+ -persistence.interval=<%= scope['prometheus::pushgateway::persistence_interval'] -%>
+<% end -%>
+<% if @web_listen_address -%>
+ -web.listen-address=<%= scope['prometheus::pushgateway::web_listen_address'] -%>
+<% end -%>
+<% if @web_telemetry_path -%>
+ -web.telemetry-path=<%= scope['prometheus::pushgateway::web_telemetry_path'] -%>
+<% end -%>
+<% if @extra_options -%>
+ <%= scope['prometheus::pushgateway::extra_options'] -%>
+<% end -%>

@@ -12,8 +12,12 @@
 
 This module installs and configures the Prometheus monitoring tool: [Prometheus web site](https://prometheus.io/docs/introduction/overview/)
 
-In order to print the yaml config files for prometheus and alertmanager, it
-uses some files from [puppet-elasticsearch](https://github.com/elastic/puppet-elasticsearch) module 
+The installation can be made from packages or with docker containers.
+
+We manage prometheus, node-exporter, alertmanager and pushgateway.
+
+In order to print the yaml config files for prometheus and alertmanager, we are using
+some lib files from [puppet-elasticsearch](https://github.com/elastic/puppet-elasticsearch) module.
 
 
 ## Usage
@@ -110,6 +114,53 @@ or:
 
 ```puppet
 include ::prometheus::node_exporter
+```
+
+Install alertmanager:
+
+```puppet
+  $alertmanager_config = {
+      global           => {
+        'smtp_from'      => 'alertmanager@company.com',
+        'smtp_smarthost' => 'localhost:25',
+      }
+      ,
+      templates        => ['/etc/prometheus/alert.template',],
+      route            => {
+        'receiver'       => 'default-receiver',
+        'group_wait'     => '30s',
+        'group_interval' => '5m',
+        'continue'       => true,
+      }
+      ,
+      receivers        => [{
+          'name'          => 'default-receiver',
+          'email_configs' => [{
+              'send_resolved' => true,
+              'to'            => 'cloud-ops@company.com',
+            }
+            ,],
+        }
+        ,],
+    }
+
+  class { '::prometheus::alertmanager':
+    package_name   => 'alertmanager',
+    package_ensure => 'latest',
+    storage_path   => '/var/lib/prometheus/alertmanager/data',
+    config         => $alertmanager_config,
+  }
+```
+
+Install from docker containers:
+
+```puppet
+
+  class { '::prometheus::alertmanager':
+    log_format     => 'logger:stdout?json=true',
+    manage_as      => 'container',
+    config         => $alertmanager_config,
+  }
 ```
 
 ## Development

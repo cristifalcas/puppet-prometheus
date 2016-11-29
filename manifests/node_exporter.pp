@@ -93,6 +93,7 @@ class prometheus::node_exporter (
   $log_level                                 = $::prometheus::node_exporter::params::log_level,
   $web_listen_address                        = $::prometheus::node_exporter::params::web_listen_address,
   $web_telemetry_path                        = $::prometheus::node_exporter::params::web_telemetry_path,
+  $extra_options                             = $::prometheus::node_exporter::params::extra_options,
 ) inherits prometheus::node_exporter::params {
   contain '::prometheus::node_exporter::install'
   contain '::prometheus::node_exporter::config'
