@@ -12,6 +12,7 @@ class prometheus::install {
             "${config_file}:${config_file}",
             "${::prometheus::storage_local_path}:${::prometheus::storage_local_path}",
         ]),
+        net             => 'host',
         restart_service => true,
         detach          => false,
         manage_service  => false,
