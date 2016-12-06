@@ -23,11 +23,6 @@ class prometheus::alertmanager::install {
     }
     default     : {
       package { $::prometheus::alertmanager::package_name: ensure => $::prometheus::alertmanager::package_ensure, }
-
-      docker::run { $::prometheus::alertmanager::package_name:
-        ensure => 'absent',
-        image  => $::prometheus::alertmanager::container_image,
-      }
     }
   }
 }

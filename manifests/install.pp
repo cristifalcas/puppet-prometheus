@@ -21,11 +21,6 @@ class prometheus::install {
     }
     default     : {
       package { $::prometheus::package_name: ensure => $::prometheus::package_ensure, }
-
-      docker::run { $::prometheus::package_name:
-        ensure => 'absent',
-        image  => $::prometheus::container_image,
-      }
     }
   }
 }

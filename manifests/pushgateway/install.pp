@@ -16,11 +16,6 @@ class prometheus::pushgateway::install {
     }
     default     : {
       package { $::prometheus::pushgateway::package_name: ensure => $::prometheus::pushgateway::package_ensure, }
-
-      docker::run { $::prometheus::pushgateway::package_name:
-        ensure => 'absent',
-        image  => $::prometheus::pushgateway::container_image,
-      }
     }
   }
 }
