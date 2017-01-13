@@ -1,5 +1,5 @@
 module Puppet_X
-  module Elastic
+  module Prometheus
     # This ugly hack is required due to the fact Puppet passes in the
     # puppet-native hash with stringified numerics, which causes the
     # decoded JSON from the Elasticsearch API to be seen as out-of-sync

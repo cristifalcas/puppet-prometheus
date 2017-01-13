@@ -1,19 +1,19 @@
 # This file is managed by Puppet, any changes will be overwritten
 
 <%-
-  $LOAD_PATH.unshift(File.join(File.dirname(__FILE__),"..","..","..","lib"))
-  require 'puppet_x/elastic/deep_to_i'
-  require 'puppet_x/elastic/hash'
+  $LOAD_PATH.unshift(File.join(File.dirname(__FILE__),"..","lib"))
+  require 'puppet_x/prometheus/deep_to_i'
+  require 'puppet_x/prometheus/hash'
 
   @yml_string = ''
 
   if !scope['prometheus::config'].empty?
 
     # Sort Hash and transform it into yaml
-    @yml_string += Puppet_X::Elastic::deep_to_i(
+    @yml_string += Puppet_X::Prometheus::deep_to_i(
       scope['prometheus::config']
     ).extend(
-      Puppet_X::Elastic::SortedHash
+      Puppet_X::Prometheus::SortedHash
     ).to_yaml
 
     # Puppet < 4 uses ZAML, which has some deviations from Puppet 4 YAML

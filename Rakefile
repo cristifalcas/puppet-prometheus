@@ -3,7 +3,7 @@ Bundler.require(:rake)
 require 'rake/clean'
 
 CLEAN.include('spec/fixtures/', 'doc', 'pkg')
-CLEAN.include('lib/puppet_x/elastic/', '*')
+CLEAN.include('lib/puppet_x/prometheus/', '*')
 CLOBBER.include('.tmp', '.librarian')
 
 require 'puppetlabs_spec_helper/rake_tasks'

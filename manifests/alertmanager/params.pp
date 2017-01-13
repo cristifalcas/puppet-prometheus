@@ -5,7 +5,6 @@ class prometheus::alertmanager::params {
   $package_ensure = 'installed'
   $service_name = 'alertmanager'
   $config_dir = '/etc/prometheus'
-  $purge_config_dir = false
   $manage_config = true
   $manage_as = 'service'
   $container_image = 'docker.io/prom/alertmanager:latest'
