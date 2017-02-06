@@ -49,7 +49,6 @@ Install the prometheus server:
 
   class { '::prometheus':
     package_ensure        => 'latest',
-    purge_config_dir      => true,
     alertmanager_url      => 'http://localhost:9093',
     log_format            => 'logger:syslog?appname=prometheus&local=7',
     storage_local_path    => '/var/lib/prometheus/data',
