@@ -1,0 +1,9 @@
+# File managed by puppet
+#
+prometheus_enable="YES"
+prometheus_args="<%= scope.function_template(['prometheus/_prometheus.erb']) %>"
+prometheus_user="<%= scope['prometheus::user'] -%>"
+prometheus_group="<%= scope['prometheus::group'] -%>"
+<% if @storage_local_path -%>
+prometheus_data_dir="<%= scope['prometheus::storage_local_path'] -%>
+<% end -%>
