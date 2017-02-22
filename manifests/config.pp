@@ -2,15 +2,18 @@
 #
 class prometheus::config {
   if $::prometheus::manage_as == 'service' {
-    file { '/etc/sysconfig/prometheus':
-      ensure  => 'file',
-      mode    => '0644',
-      owner   => $::prometheus::user,
-      group   => $::prometheus::group,
-      content => template("${module_name}/sysconfig/prometheus"),
+    case $::osfamily {
+      'RedHat', 'Linux': {
+        file { '/etc/sysconfig/prometheus':
+          ensure  => 'file',
+          mode    => '0644',
+          owner   => $::prometheus::user,
+          group   => $::prometheus::group,
+          content => template("${module_name}/sysconfig/prometheus"),
+        }
+      }
     }
   }
-
   if $::prometheus::manage_config {
     $content = template("${module_name}/prometheus.yml.erb")
   } else {

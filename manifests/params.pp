@@ -6,7 +6,6 @@ class prometheus::params {
   $service_name = 'prometheus'
   $user = 'prometheus'
   $group = 'prometheus'
-  $config_dir = '/etc/prometheus'
   $manage_config = true
   $manage_as = 'service'
   $container_image = 'docker.io/prom/prometheus:latest'
@@ -52,5 +51,14 @@ class prometheus::params {
   $extra_options = undef
 
   $config = {
+  }
+
+  case $::osfamily {
+    'RedHat', 'Linux': {
+      $config_dir = '/etc/prometheus'
+    }
+    'FreeBSD': {
+      $config_dir = '/usr/local/etc'
+    }
   }
 }
