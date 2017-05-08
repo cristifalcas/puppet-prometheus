@@ -111,16 +111,11 @@
 #      The size in bytes for the label pair to fingerprints index cache.
 #
 #  [*storage_local_max_chunks_to_persist*]
-#      How many chunks can be waiting for persistence before sample
-#      ingestion will be throttled. Many chunks waiting to be persisted will
-#      increase the checkpoint size.
+#      Deprecated. This flag has no effect anymore.
 #
 #  [*storage_local_memory_chunks*]
-#      How many chunks to keep in memory. While the size of a chunk is
-#      1kiB, the total memory usage will be significantly higher than this value
-#      * 1kiB. Furthermore, for various reasons, more chunks might have to be
-#      kept in memory temporarily. Sample ingestion will be throttled if the
-#      configured value is exceeded by more than 10%.
+#      Deprecated. If set, -storage.local.target-heap-size will be set to 
+#      this value times 3072.
 #
 #  [*storage_local_num_fingerprint_mutexes*]
 #      The number of mutexes used for fingerprint locking.
@@ -150,36 +145,12 @@
 #      'adaptive' strategy, series files are sync'd for as long as the storage
 #      is not too much behind on chunk persistence.
 #
-#  [*storage_remote_graphite_address*]
-#      The host:port of the remote Graphite server to send samples to.
-#      None, if empty.
-#
-#  [*storage_remote_graphite_prefix*]
-#      The prefix to prepend to all metrics exported to Graphite. None, if
-#      empty.
-#
-#  [*storage_remote_graphite_transport*]
-#      Transport protocol to use to communicate with Graphite. 'tcp', if
-#      empty.
-#
-#  [*storage_remote_influxdb_url*]
-#      The URL of the remote InfluxDB server to send samples to. None, if
-#      empty.
-#
-#  [*storage_remote_influxdb_database*]
-#      The name of the database to use for storing samples in InfluxDB.
-#
-#  [*storage_remote_influxdb_retention_policy*]
-#      The InfluxDB retention policy to use.
-#
-#  [*storage_remote_influxdb_username*]
-#      The username to use when sending samples to InfluxDB. The
-#      corresponding password must be provided via the INFLUXDB_PW environment
-#      variable.
-#
-#  [*storage_remote_opentsdb_url*]
-#      The URL of the remote OpenTSDB server to send samples to. None, if
-#      empty.
+#  [*storage_local_target_heap_size*]
+#      The metrics storage attempts to limit its own memory usage such 
+#      that the total heap size approaches this value. Note that this is not a 
+#      hard limit. Actual heap size might be temporarily or permanently higher 
+#      for a variety of reasons. The default value is a relatively safe setting 
+#      to not use more than 3 GiB physical memory.
 #
 # == WEB ==
 #
@@ -202,6 +173,13 @@
 #
 #  [*web_listen_address*]
 #      Address to listen on for the web interface, API, and telemetry.
+#
+#  [*web_max_connections*]
+#      Maximum number of simultaneous connections.
+#
+#  [*web_read_timeout*]
+#      Maximum duration before timing out read of the request, and closing 
+#      idle connections.
 #
 #  [*web_route_prefix*]
 #      Prefix for the internal routes of web endpoints. Defaults to path
@@ -252,19 +230,14 @@ class prometheus (
   $storage_local_retention                     = $::prometheus::params::storage_local_retention,
   $storage_local_series_file_shrink_ratio      = $::prometheus::params::storage_local_series_file_shrink_ratio,
   $storage_local_series_sync_strategy          = $::prometheus::params::storage_local_series_sync_strategy,
-  $storage_remote_graphite_address             = $::prometheus::params::storage_remote_graphite_address,
-  $storage_remote_graphite_prefix              = $::prometheus::params::storage_remote_graphite_prefix,
-  $storage_remote_graphite_transport           = $::prometheus::params::storage_remote_graphite_transport,
-  $storage_remote_influxdb_url                 = $::prometheus::params::storage_remote_influxdb_url,
-  $storage_remote_influxdb_database            = $::prometheus::params::storage_remote_influxdb_database,
-  $storage_remote_influxdb_retention_policy    = $::prometheus::params::storage_remote_influxdb_retention_policy,
-  $storage_remote_influxdb_username            = $::prometheus::params::storage_remote_influxdb_username,
-  $storage_remote_opentsdb_url                 = $::prometheus::params::storage_remote_opentsdb_url,
+  $storage_local_target_heap_size              = $::prometheus::params::storage_local_target_heap_size,
   $web_console_libraries                       = $::prometheus::params::web_console_libraries,
   $web_console_templates                       = $::prometheus::params::web_console_templates,
   $web_enable_remote_shutdown                  = $::prometheus::params::web_enable_remote_shutdown,
   $web_external_url                            = $::prometheus::params::web_external_url,
   $web_listen_address                          = $::prometheus::params::web_listen_address,
+  $web_max_connections                         = $::prometheus::params::web_max_connections,
+  $web_read_timeout                            = $::prometheus::params::web_read_timeout,
   $web_route_prefix                            = $::prometheus::params::web_route_prefix,
   $web_telemetry_path                          = $::prometheus::params::web_telemetry_path,
   $web_user_assets                             = $::prometheus::params::web_user_assets,

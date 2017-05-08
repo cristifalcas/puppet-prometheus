@@ -62,29 +62,8 @@
 <% if @storage_local_series_sync_strategy -%>
  -storage.local.series-sync-strategy=<%= scope['prometheus::storage_local_series_sync_strategy'] -%>
 <% end -%>
-<% if @storage_remote_graphite_address -%>
- -storage.remote.graphite-address=<%= scope['prometheus::storage_remote_graphite_address'] -%>
-<% end -%>
-<% if @storage_remote_graphite_prefix -%>
- -storage.remote.graphite-prefix=<%= scope['prometheus::storage_remote_graphite_prefix'] -%>
-<% end -%>
-<% if @storage_remote_graphite_transport -%>
- -storage.remote.graphite-transport=<%= scope['prometheus::storage_remote_graphite_transport'] -%>
-<% end -%>
-<% if @storage_remote_influxdb_url -%>
- -storage.remote.influxdb-url=<%= scope['prometheus::storage_remote_influxdb_url'] -%>
-<% end -%>
-<% if @storage_remote_influxdb_database -%>
- -storage.remote.influxdb.database=<%= scope['prometheus::storage_remote_influxdb_database'] -%>
-<% end -%>
-<% if @storage_remote_influxdb_retention_policy -%>
- -storage.remote.influxdb.retention-policy=<%= scope['prometheus::storage_remote_influxdb_retention_policy'] -%>
-<% end -%>
-<% if @storage_remote_influxdb_username -%>
- -storage.remote.influxdb.username=<%= scope['prometheus::storage_remote_influxdb_username'] -%>
-<% end -%>
-<% if @storage_remote_opentsdb_url -%>
- -storage.remote.opentsdb-url=<%= scope['prometheus::storage_remote_opentsdb_url'] -%>
+<% if @storage_local_target_heap_size -%>
+ -storage.local.target-heap-size=<%= scope['prometheus::storage_local_target_heap_size'] -%>
 <% end -%>
 <% if @web_console_libraries -%>
  -web.console.libraries=<%= scope['prometheus::web_console_libraries'] -%>
@@ -100,6 +79,12 @@
 <% end -%>
 <% if @web_listen_address -%>
  -web.listen-address=<%= scope['prometheus::web_listen_address'] -%>
+<% end -%>
+<% if @web_max_connections -%>
+ -web.max-connections=<%= scope['prometheus::web_max_connections'] -%>
+<% end -%>
+<% if @web_read_timeout -%>
+ -web.read-timeout=<%= scope['prometheus::web_read_timeout'] -%>
 <% end -%>
 <% if @web_route_prefix -%>
  -web.route-prefix=<%= scope['prometheus::web_route_prefix'] -%>

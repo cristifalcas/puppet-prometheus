@@ -3,10 +3,10 @@
 class prometheus::node_exporter::service {
   if $::prometheus::node_exporter::package_ensure == 'absent' {
     $service_ensure ='stopped'
-    $service_enable = false 
+    $service_enable = false
   } else {
     $service_ensure ='running'
-    $service_enable = true 
+    $service_enable = true
   }
 
   service { 'node_exporter':
